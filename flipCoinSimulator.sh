@@ -107,7 +107,38 @@ do
    echo ""${outut}": "${TripletCoinDictionary[$output]}""
 done
 
+#To print sorting and winning of singlet, doublet and triplet combination 
+echo "Singlet combination sorting is:"
+for totalNumber in "${!SingletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${SingletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3
+	echo "Singlet combination of winning::"
+for totalNumber in "${!SingletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${SingletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3 | head -1
 
+echo "Doublet combination sorting is:"
+for totalNumber in "${!DoubletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${DoubletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3
+	echo "Doublet combination of winning::"
+for totalNumber in "${!DoubletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${DoubletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3 | head -1
 
+echo "Triplet combination sorting is:"
+for totalNumber in "${!TripletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${TripletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3
+	echo "Triplet combination of winning::"
+for totalNumber in "${!TripletCoinDictionary[@]}"
+do
+	echo "$totalNumber : ${TripletCoinDictionary["$totalNumber"]}"
+done | sort -rn -k3 | head -1
 
 
