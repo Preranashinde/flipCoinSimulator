@@ -2,6 +2,7 @@
 
 declare -A SingletCoinDictionary
 declare -A DoubletCoinDictionary
+declare -A TripletCoinDictionary
 
 #Store the singlet combination result
 read -p "Enter how many times you want to flip a coin for singlet combination:" FlipCoin1
@@ -67,7 +68,44 @@ echo "PercentageOfTailHead::" $PercentageOfTailHead
 PercentageOfTailTail=`echo " scale = 4 ; (${DoubletCoinDictionary[TailTail]}*100)/$FlipCoin2" | bc -l`
 echo "PercentageOfTailTail::" $PercentageOfTailTail
 
+#Store the triplet combination result
+read -p "Enter how many times you want to flip a coin for triplet combination:" FlipCoin3
 
+for((counter=1; counter<=FlipCoin3; counter++))
+
+do
+   result=$((RANDOM%8))
+   if [ $result -eq 0 ]
+   then
+      TripletCoinDictionary[HHH]=$((${TripletCoinDictionary[HHH]}+1))
+   elif [ $result -eq 1 ]
+   then
+      TripletCoinDictionary[HHT]=$((${TripletCoinDictionary[HHT]}+1))
+   elif [ $result -eq 2 ]
+   then
+      TripletCoinDictionary[HTH]=$((${TripletCoinDictionary[HTH]}+1))
+	elif [ $result -eq 3 ]
+   then
+      TripletCoinDictionary[HTT]=$((${TripletCoinDictionary[HTT]}+1))
+   elif [ $result -eq 4 ]
+   then
+      TripletCoinDictionary[TTH]=$((${TripletCoinDictionary[TTH]}+1))
+   elif [ $result -eq 5 ]
+   then
+      TripletCoinDictionary[THT]=$((${TripletCoinDictionary[THT]}+1))
+	elif [ $result -eq 6 ]
+   then
+      TripletCoinDictionary[TTH]=$((${TripletCoinDictionary[TTH]}+1))
+   else
+      TripletCoinDictionary[TTT]=$((${TripletCoinDictionary[TTT]}+1))
+   fi
+done
+
+#To print triplet dictionary output
+for output in "${!TripletCoinDictionary[@]}"
+do
+   echo ""${outut}": "${TripletCoinDictionary[$output]}""
+done
 
 
 
